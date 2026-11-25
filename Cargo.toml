@@ -1,0 +1,42 @@
+[package]
+name = "myscreensaver"
+version = "0.1.0"
+edition = "2021"
+description = "Omarchy-style terminal text effects screensaver for Windows"
+license = "MIT"
+
+[[bin]]
+name = "myscreensaver"
+path = "src/main.rs"
+
+[dependencies]
+# Effect engine: ttfx, the MIT-licensed Rust port of TerminalTextEffects.
+# ttfx ships a library target (src/lib.rs); we drive its fx engine frame by
+# frame and draw the frames ourselves. Pinned to a commit for reproducibility.
+ttfx = { git = "https://github.com/omacom/ttfx", rev = "14ed2742596f0056b13e25d14a83ea851adc2294" }
+clap = "4"
+
+[dependencies.windows-sys]
+version = "0.59"
+features = [
+    "Win32_Foundation",
+    "Win32_Graphics_Gdi",
+    "Win32_UI_WindowsAndMessaging",
+    "Win32_UI_HiDpi",
+    "Win32_UI_Input_KeyboardAndMouse",
+    "Win32_UI_Controls",
+    "Win32_UI_Controls_Dialogs",
+    "Win32_System_LibraryLoader",
+    "Win32_System_Registry",
+    "Win32_System_Threading",
+    "Win32_Media",
+    "Win32_Security",
+    "Win32_System_ApplicationInstallationAndServicing",
+]
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+strip = true
+panic = "abort"

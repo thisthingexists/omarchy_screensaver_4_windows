@@ -1,5 +1,7 @@
 # MyScreensaver
 
+![MyScreensaver playing the burn and synthgrid effects over block-letter ASCII art](docs/screensaver.gif)
+
 A native Windows 11 screensaver in the style of the Omarchy Linux screensaver.
 Each monitor turns black and your ASCII art plays through a random terminal
 text effect: decrypt, beams, matrix, burn, scattered and 32 more. When an
